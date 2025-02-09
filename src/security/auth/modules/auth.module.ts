@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthController } from '../../../controlllers/auth/auth.controller';
 import { JwtStrategy } from '../strategy/jwt.strategy';
 import { HttpModule } from '@nestjs/axios';
+import { AppLogger } from '../../../utils/logger/logger.service';
 
 @Module({
   imports: [
@@ -20,12 +21,14 @@ import { HttpModule } from '@nestjs/axios';
   ],
   providers: [
       AuthService,
-      JwtStrategy
+      JwtStrategy,
+      AppLogger
   ],
   exports: [
       AuthService,
       JwtStrategy,
-      PassportModule
+      PassportModule,
+      AppLogger
   ],
 })
 export class AuthModule {}

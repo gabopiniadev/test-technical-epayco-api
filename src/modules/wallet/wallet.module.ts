@@ -3,6 +3,7 @@ import {WalletController} from "../../controlllers/wallet/wallet.controller";
 import {WalletService} from "../../services/wallet/wallet.service";
 import {HttpModule} from "@nestjs/axios";
 import {EmailService} from "../../utils/email/email.service";
+import { AppLogger } from '../../utils/logger/logger.service';
 
 @Module({
     imports: [
@@ -13,11 +14,13 @@ import {EmailService} from "../../utils/email/email.service";
     ],
     providers: [
         WalletService,
-        EmailService
+        EmailService,
+        AppLogger
     ],
     exports: [
        WalletService,
-        EmailService
+        EmailService,
+        AppLogger
     ]
 })
 export class WalletModule {}

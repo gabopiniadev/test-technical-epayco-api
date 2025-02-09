@@ -9,10 +9,10 @@ import {
   Request,
   HttpStatus, UseFilters,
 } from '@nestjs/common';
-import RegisterData from '../../dto/customer.interface';
 import { AuthService } from '../../security/auth/services/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { HttpExceptionFilter } from '../../exceptions/http-exception.filter';
+import { RegisterDataDto } from '../../dto/customer.interface';
 
 @Controller('auth')
 @UseFilters(HttpExceptionFilter)
@@ -20,7 +20,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() body: RegisterData) {
+  async register(@Body() body: RegisterDataDto) {
     console.log(body);
     const { typeDocument, document, nameCustomer, phone, email, password } =
       body;
